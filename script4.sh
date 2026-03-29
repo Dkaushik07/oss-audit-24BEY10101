@@ -1,6 +1,6 @@
 #!/bin/bash
 # Script 4: Log File Analyzer
-# Author: Dron Kaushik | Course: Open Source Software
+# By Dron Kaushik | Course: Open Source Software
 # Usage: ./script4.sh /var/log/dpkg.log
 
 LOGFILE=$1
