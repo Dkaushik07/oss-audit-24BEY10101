@@ -1,6 +1,6 @@
 #!/bin/bash
 # Script 3: Disk and Permission Auditor
-# Author: Dron Kaushik | Course: Open Source Software
+# This utility was written by Dron Kaushik to analyze system identities for the VIT OSS Course.
 
 DIRS=("/etc" "/var/log" "/home" "/usr/bin" "/tmp")
 
