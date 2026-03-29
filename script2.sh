@@ -1,27 +1,26 @@
 #!/bin/bash
-# Script 2: FOSS Package Inspector
-# This utility was written by Dron Kaushik to analyze system identities for the VIT OSS Course.
+# FOSS Package Verification Script
+# Author: Dron Kaushik | VIT Capstone
 
-PACKAGE="vlc" # e.g. httpd, mysql, vlc, firefox
+target_software="vlc" # Target application
 
-# Check if package is installed
-# Note: Using dpkg instead of rpm because we are on Ubuntu
-if dpkg -s $PACKAGE &>/dev/null; then
- echo "$PACKAGE is installed."
- # Find information equivalent to 'rpm -qi'
- dpkg -s $PACKAGE | grep -E 'Version|Section|Description'
+# Verifying if the package is installed via dpkg (Ubuntu)
+if dpkg -s $target_software &>/dev/null; then
+ echo "Status: $target_software is correctly installed."
+ echo "-"
+ # Filtering version and description details
+ dpkg -s $target_software | grep -E 'Version|Section|Description'
 else
- echo "$PACKAGE is NOT installed."
+ echo "Error: $target_software could not be located on this system."
 fi
 
-# TODO: Add a case statement that prints a one-line
-# philosophy note about the package based on its name
-case $PACKAGE in
- httpd) echo "Apache: the web server that built the open internet" ;;
- mysql) echo "MySQL: open source at the heart of millions of apps" ;;
- # TODO: Add your software and 3 others
- vlc)         echo "VLC: built by students to share video freely" ;;
- firefox)     echo "Firefox: a nonprofit fighting for an open web" ;;
- git)         echo "Git: the tool Linus built when proprietary failed him" ;;
- libreoffice) echo "LibreOffice: born from a community fork — a real lesson" ;;
+echo "---"
+# Philosophy note for various open-source projects
+case $target_software in
+ httpd)  echo "Apache: The server that powered the early web." ;;
+ mysql)  echo "MySQL: Supporting the data of millions of users." ;;
+ vlc)    echo "VLC: A global success built entirely by students." ;;
+ firefox)echo "Firefox: Fighting for an open and secure internet." ;;
+ git)    echo "Git: Decentralized control for the coding community." ;;
+ *)      echo "A vital component of the open-source world." ;;
 esac
