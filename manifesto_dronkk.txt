@@ -1,0 +1,5 @@
+--- PERSONAL OPEN SOURCE MANIFESTO ---
+Created on: 29 March 2026
+In my daily life, I rely on VLC to explore the digital world.
+To me, the essence of open source is ownership.
+In the spirit of sharing, I pledge to build a video editor and give it to the community.
