@@ -1,25 +1,29 @@
 #!/bin/bash
-# Script 1: System Identity Report
-# Author: DRON KAUSHIK | Course: Open Source Software
+# System Analysis Utility
+# Developed by Dron Kaushik for the VLC Audit Project
 
-# --- Variables ---
-STUDENT_NAME="DRON KAUSHIK" 
-SOFTWARE_CHOICE="VLC Media Player"
+#Identity Variables
+auditor_name="Dron Kaushik" 
+audit_target="VLC Media Player"
 
-# --- System info ---
-KERNEL=$(uname -r)
-USER_NAME=$(whoami)
-UPTIME=$(uptime -p)
+#Fetching System Metrics 
+os_kernel=$(uname -r)
+current_user=$(whoami)
+uptime_status=$(uptime -p)
+home_dir_path=$HOME
 
-# --- Display ---
-echo "================================"
-echo " Open Source Audit — $STUDENT_NAME"
-echo "================================"
-echo "Kernel  : $KERNEL"
-echo "User    : $USER_NAME"
-echo "Uptime  : $UPTIME"
+# Displaying Information
+echo "*"
+echo " OSS Audit Report - Managed by $auditor_name"
+echo "*"
+echo "Kernel Version       : $os_kernel"
+echo "Logged-in User       : $current_user"
+echo "Home Directory       : $home_dir_path"
+echo "System Uptime        : $uptime_status"
 
-# TODO: Add distro name, date, and license message
-echo "Distro  : $(lsb_release -d | cut -f2)"
-echo "Date    : $(date)"
-echo "License : This system is covered by the GNU GPL Licence."
+# Displaying distribution details and date
+echo "Distribution Info    : $(lsb_release -d | cut -f2)"
+echo "Current Date/Time    : $(date)"
+echo "OS Licensing         : This system is protected by the GNU GPL."
+echo "Project Under Audit  : $audit_target"
+echo "*"
