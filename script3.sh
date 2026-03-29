@@ -1,34 +1,31 @@
 #!/bin/bash
-# Script 3: Disk and Permission Auditor
-# This utility was written by Dron Kaushik to analyze system identities for the VIT OSS Course.
+# Storage and Permission Audit Tool
+# Scripted by Dron Kaushik
 
-DIRS=("/etc" "/var/log" "/home" "/usr/bin" "/tmp")
+audit_list=("/etc" "/var/log" "/home" "/usr/bin" "/tmp")
 
-echo "Directory Audit Report"
-echo "----------------------"
+echo " Dron's Directory Permission & Size Report"
+echo "--"
 
-for DIR in "${DIRS[@]}"; do
- if [ -d "$DIR" ]; then
-    # Extracts permissions, owner, and group using awk
-    PERMS=$(ls -ld $DIR | awk '{print $1, $3, $4}')
-    # Extracts size using du and cut
-    SIZE=$(du -sh $DIR 2>/dev/null | cut -f1)
-    echo "$DIR => Permissions: $PERMS | Size: $SIZE"
+for folder in "${audit_list[@]}"; do
+ if [ -d "$folder" ]; then
+    # Extracting file permissions and ownership using awk
+    access_rights=$(ls -ld $folder | awk '{print $1, $3, $4}')
+    # Calculating directory size using du
+    total_size=$(du -sh $folder 2>/dev/null | cut -f1)
+    echo "Folder: $folder | Access: $access_rights | Size: $total_size"
  else
-    echo "$DIR does not exist on this system"
+    echo "Notice: $folder is missing or inaccessible."
  fi
 done
 
-# TODO: Add a section that checks if your software's
-# config directory exists and prints its permissions
-echo "----------------------"
-# For VLC, the config directory is usually in the user's home .config folder
-VLC_CONFIG="$HOME/.config/vlc"
+echo "--"
+# Checking for the local VLC configuration directory
+vlc_config_dir="$HOME/.config/vlc"
 
-if [ -d "$VLC_CONFIG" ]; then
-    echo "VLC configuration directory found."
-    ls -ld "$VLC_CONFIG" | awk '{print "Permissions: " $1, "| Owner: " $3}'
+if [ -d "$vlc_config_dir" ]; then
+    echo "Result: VLC Config Folder is present."
+    ls -ld "$vlc_config_dir" | awk '{print "Permissions: " $1 " | Owner: " $3}'
 else
-    echo "VLC configuration directory not found at $VLC_CONFIG."
-    echo "Note: It is created the first time you run the software."
+    echo "Result: VLC configuration not yet found at $vlc_config_dir."
 fi
