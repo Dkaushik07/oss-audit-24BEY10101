@@ -1,6 +1,6 @@
 #!/bin/bash
 # Script 2: FOSS Package Inspector
-# Author: Dron Kaushik | Course: Open Source Software
+# This utility was written by Dron Kaushik to analyze system identities for the VIT OSS Course.
 
 PACKAGE="vlc" # e.g. httpd, mysql, vlc, firefox
 
