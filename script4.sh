@@ -1,33 +1,30 @@
 #!/bin/bash
-# Script 4: Log File Analyzer
-# By Dron Kaushik | Course: Open Source Software
-# Usage: ./script4.sh /var/log/dpkg.log
+# Log Analysis Utility for OSS Projects
+# Created by Dron Kaushik
 
-LOGFILE=$1
-# Default keyword is 'error' if no second argument is provided
-KEYWORD=${2:-"error"} 
-COUNT=0
+source_log=$1
+search_keyword=${2:-"error"} 
+total_hits=0
 
-# Check if the file exists
-if [ ! -f "$LOGFILE" ]; then
- echo "Error: File $LOGFILE not found."
+# Ensure the log file is readable before processing
+if [ ! -f "$source_log" ]; then
+ echo "Process Failed: $source_log cannot be found."
  exit 1
 fi
 
-# While-read loop to scan the log file line by line
-while IFS= read -r LINE; do
- if echo "$LINE" | grep -iq "$KEYWORD"; then
-    COUNT=$((COUNT + 1))
+# Reading the file line by line to count keywords
+while IFS= read -r current_line; do
+ if echo "$current_line" | grep -iq "$search_keyword"; then
+    total_hits=$((total_hits + 1))
  fi
-done < "$LOGFILE"
+done < "$source_log"
 
-echo "Keyword '$KEYWORD' found $COUNT times in $LOGFILE"
+echo "Search Result: Found $total_hits instances of '$search_keyword' in $source_log"
 
-# TODO: Add a do-while style retry if the file is empty,
-# and print the last 5 matching lines using tail + grep
-if [ ! -s "$LOGFILE" ]; then
-    echo "Warning: File is empty."
+# Checking for content and showing recent log entries
+if [ ! -s "$source_log" ]; then
+    echo "Note: The target log file appears to be empty."
 else
-    echo "--- Last 5 matching lines ---"
-    grep -i "$KEYWORD" "$LOGFILE" | tail -n 5
+    echo "Displaying Last 5 Matches"
+    grep -i "$search_keyword" "$source_log" | tail -n 5
 fi
