@@ -4,14 +4,15 @@
 **Course:** Open Source Software (Capstone Project)
 
 ## Project Overview
-This repository contain structured audit of **VLC Media Player**, exploring its origins, licensing (GPL v2), and technical footprint on a Linux environment. It includes five custom shell script designed to demonstrate Linux administration and automation skill.
+
+The repository contains a structured audit of the VLC Media Player which examines its historical development and its licensing through GPL v2 and its technical specifications for Linux operating systems. The system includes five unique shell scripts which demonstrate the ability to manage Linux systems and automate tasks. 
 
 ## Scripts Description
-1. **script1.sh (System Identity):** Generates report of the current Linux distribution, kernel version, and user environment.
-2. **script2.sh (Package Inspector):** Verifies if VLC is installed and provides philosophical overview of the project.
-3. **script3.sh (Disk Auditor):** Audits system directories for disk usage and permissions, including VLC configuration paths.
-4. **script4.sh (Log Analyzer):** Scans system logs for specific keywords and reports the frequency of occurrences.
-5. **script5.sh (Manifesto Generator):** interactive tool that generates  personalized Open Source philosophy statement.
+1. **script1.sh (System Identity):** The script creates a report which includes information about the Linux distribution and kernel version and user environment details.
+2. **script2.sh (Package Inspector):** The script checks for VLC installation status while delivering a philosophical overview of the project.
+3. **script3.sh (Disk Auditor):** The system inspects all system directories to check disk space usage and access rights which includes VLC configuration directories.
+4. **script4.sh (Log Analyzer):** The system examines system logs to find particular keywords and calculates how often those keywords appear.
+5. **script5.sh (Manifesto Generator):** The system provides an interactive tool which creates a customized Open Source philosophy statement for users. 
 
 ## How to Run the Scripts
 To execute script on Linux/WSL system, follow these steps:
@@ -31,6 +32,6 @@ To execute script on Linux/WSL system, follow these steps:
    - `./script5.sh`
 
 ## Dependencies
-- Linux System (Ubuntu/Debian recommended)
-- `vlc` package (`sudo apt install vlc`)
-- `lsb-release` package
+- The system requires Linux operating systems with Ubuntu/Debian as the suggested platform.
+- To install VLC the user must execute the command `sudo apt install vlc`.
+- The system requires the installation of `lsb-release` package.
